@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSAR Tool — Guide</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .guide-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+      align-items: start;
+    }
+    .guide-sidebar {
+      position: sticky; top: 80px;
+    }
+    .guide-sidebar h4 {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 12px; padding: 0 12px;
+    }
+    .guide-sidebar ul { list-style: none; }
+    .guide-sidebar li a {
+      display: block; padding: 8px 12px; border-radius: 8px;
+      font-size: 14px; color: var(--muted);
+      transition: all .2s;
+    }
+    .guide-sidebar li a:hover { color: var(--text); background: rgba(79,163,224,0.08); }
+    .guide-sidebar li a.active { color: var(--accent); background: rgba(79,163,224,0.1); font-weight: 500; }
+
+    .guide-content h2 {
+      font-size: 36px; font-weight: 700; letter-spacing: -1px;
+      margin-bottom: 12px; margin-top: 64px; padding-top: 64px;
+      border-top: 1px solid var(--border);
+      color: var(--text);
+    }
+    .guide-content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .guide-content h3 { font-size: 20px; font-weight: 600; margin: 32px 0 10px; color: var(--text); }
+    .guide-content p  { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+    .guide-content ul, .guide-content ol {
+      padding-left: 20px; color: var(--muted); font-size: 15px;
+      line-height: 1.8; margin-bottom: 16px;
+    }
+
+    .tip {
+      background: rgba(79,163,224,0.07);
+      border: 1px solid rgba(79,163,224,0.2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      font-size: 14px; color: var(--muted);
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+    .tip strong { color: var(--accent); }
+
+    .warn {
+      background: rgba(255,192,0,0.06);
+      border: 1px solid rgba(255,192,0,0.2);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      font-size: 14px; color: var(--muted);
+      margin: 20px 0;
+    }
+    .warn strong { color: var(--gold); }
+
+    kbd {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 5px;
+      padding: 2px 7px;
+      font-size: 12px; font-family: monospace;
+      color: var(--text);
+    }
+
+    .shortcut-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
+    .shortcut-table th {
+      text-align: left; padding: 10px 14px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); border-bottom: 1px solid var(--border);
+    }
+    .shortcut-table td {
+      padding: 10px 14px; font-size: 14px; color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .shortcut-table td:first-child { color: var(--text); font-weight: 500; }
+    .shortcut-table tr:last-child td { border-bottom: none; }
+
+    .feature-tag {
+      display: inline-block;
+      background: rgba(46,117,182,0.15);
+      border: 1px solid rgba(79,163,224,0.2);
+      color: var(--accent);
+      font-size: 11px; font-weight: 700; letter-spacing: .5px;
+      padding: 2px 8px; border-radius: 4px;
+      text-transform: uppercase;
+      margin-right: 6px; vertical-align: middle;
+    }
+
+    @media (max-width: 768px) {
+      .guide-layout { grid-template-columns: 1fr; padding: 100px 20px 60px; }
+      .guide-sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">L</div>
+    LSAR Tool
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Download</a></li>
+    <li><a href="guide.html">Guide</a></li>
+    <li><a href="releases.html">Releases</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#download" class="nav-cta">Download Free</a></li>
+  </ul>
+</nav>
+
+<div class="guide-layout">
+
+  <!-- Sidebar -->
+  <aside class="guide-sidebar">
+    <h4>On this page</h4>
+    <ul>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#catalogue">Item Catalogue</a></li>
+      <li><a href="#lcn">LCN Hierarchy</a></li>
+      <li><a href="#fmeca">FMECA</a></li>
+      <li><a href="#tasks">Maintenance Tasks</a></li>
+      <li><a href="#support">Support Equipment</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#exports">Exports</a></li>
+      <li><a href="#shortcuts">Keyboard Shortcuts</a></li>
+    </ul>
+  </aside>
+
+  <!-- Content -->
+  <article class="guide-content">
+
+    <h2 id="getting-started">Getting Started</h2>
+    <p>LSAR Tool is a portable Windows application — no installation required. Download the zip, extract it anywhere, and run <kbd>LSAR Tool.exe</kbd>.</p>
+    <p>When you first open the app you'll land on the <strong>Dashboard</strong>. Your data is stored in a local <code style="color:var(--accent)">.db</code> file on your computer. Everything works offline.</p>
+    <div class="tip"><strong>Tip:</strong> On first launch Windows may show a SmartScreen warning. Click <em>"More info"</em> then <em>"Run anyway"</em> — this is normal for unsigned apps.</div>
+
+    <h2 id="projects">Projects</h2>
+    <p>Each project is its own isolated database file. You can have multiple projects open in the sidebar and switch between them instantly.</p>
+    <h3>Creating a project</h3>
+    <p>Click the <strong>+</strong> button in the Projects section of the sidebar. Give it a name — the database file will be saved as <code style="color:var(--accent)">ProjectName.db</code> in your chosen storage folder.</p>
+    <h3>Opening an existing project</h3>
+    <p>Click the <strong>📂</strong> button to browse for an existing <code style="color:var(--accent)">.db</code> file. Useful for opening databases from a shared network drive.</p>
+    <h3>Renaming & closing</h3>
+    <p>Each project in the sidebar has a <kbd>✏️</kbd> rename button and a <kbd>✕</kbd> close button. Closing removes it from the list but does <strong>not</strong> delete the file.</p>
+    <h3>Storage location</h3>
+    <p>Click <strong>📁 Storage</strong> at the bottom of the Projects panel to choose where new database files are saved.</p>
+
+    <h2 id="catalogue">Item Catalogue</h2>
+    <p>The catalogue is your master list of all maintainable hardware items. Every item in the LCN hierarchy must reference a catalogue entry.</p>
+    <h3>Adding items</h3>
+    <p>Click <strong>+ Add Item</strong> and fill in the part number, name, category and failure rate. Failure rate is in <strong>Failures per Million Hours (FPMH)</strong>.</p>
+    <h3>Inline editing</h3>
+    <p>Click any cell in the table to edit it directly. Press <kbd>Tab</kbd> to move to the next cell, <kbd>Enter</kbd> to confirm. Changes save automatically on blur.</p>
+    <div class="tip"><strong>Tip:</strong> Use the column filter buttons (▾) in each header to filter and sort the table.</div>
+
+    <h2 id="lcn">LCN Hierarchy</h2>
+    <p>The LCN (Logistic Control Number) Hierarchy defines the hardware breakdown structure of your system — equivalent to LSA Table 010 in S3000L.</p>
+    <h3>Adding nodes</h3>
+    <p>Click <strong>+ Add Node</strong>. Each node requires a unique LCN code and a reference to a catalogue item. You can set a parent LCN to build the tree structure.</p>
+    <h3>Tree view</h3>
+    <p>Nodes are displayed in a collapsible tree. Click the <kbd>▶</kbd> toggle to expand/collapse branches.</p>
+    <div class="tip"><strong>Tip:</strong> LCN codes are free-form text — use any convention that fits your programme (e.g. A, A-1, A-1-1 or 0100, 0101, etc.).</div>
+
+    <h2 id="fmeca">FMECA</h2>
+    <p>The FMECA Register stores all failure modes, effects and criticality data — equivalent to LSA Table 030. System MTBF and MTTR are calculated automatically from this data.</p>
+    <h3>Adding records</h3>
+    <p>Click <strong>+ Add Record</strong>. Select the LCN node, then fill in the function, failure mode, effects chain and severity category.</p>
+    <h3>Severity categories</h3>
+    <ul>
+      <li><span style="color:#f85149; font-weight:600;">Critical</span> — Loss of life or mission-critical system failure</li>
+      <li><span style="color:#e3b341; font-weight:600;">High</span> — Major degradation of system function</li>
+      <li><span style="color:#79c0ff; font-weight:600;">Medium</span> — Minor degradation, workaround available</li>
+      <li><span style="color:#3fb950; font-weight:600;">Low</span> — Cosmetic or negligible impact</li>
+    </ul>
+    <h3>Failure Mode Ratio (%)</h3>
+    <p>Each failure mode can be assigned a percentage of all faults for that LCN. The sum across all modes for a given LCN cannot exceed 100%. This feeds into the criticality MTBF cards on the dashboard.</p>
+    <h3>Inline LCN editing</h3>
+    <p>The LCN column in the FMECA table is a dropdown — you can reassign a failure mode to a different LCN node directly in the table.</p>
+
+    <h2 id="tasks">Maintenance Tasks</h2>
+    <p>Preventive maintenance task analysis — equivalent to LSA Table 040. Tasks are linked to LCN nodes and drive the PM summary on the dashboard.</p>
+    <h3>Adding tasks</h3>
+    <p>Click <strong>+ Add Task</strong>. Select the LCN node, set a task ID, description, interval, man-hours, personnel count and skill level.</p>
+    <h3>Skill levels</h3>
+    <ul>
+      <li><span style="color:#79c0ff; font-weight:600;">Basic</span> — Standard maintenance technician</li>
+      <li><span style="color:#d2a8ff; font-weight:600;">Intermediate</span> — Specialist or systems technician</li>
+    </ul>
+    <h3>Support equipment</h3>
+    <p>Click the <kbd>✏️</kbd> button on any task to open the edit modal. The <strong>Support Equipment</strong> section lets you link required STE to the task with quantities.</p>
+
+    <h2 id="support">Support Equipment</h2>
+    <p>The Support Equipment catalogue stores all Special and Standard tools and equipment — equivalent to LSA Table 050.</p>
+    <h3>Categories</h3>
+    <ul>
+      <li><span style="color:#e3b341; font-weight:600;">Special</span> — Purpose-built or programme-specific tools (e.g. borescope kit, hydraulic test rig)</li>
+      <li><span style="color:#3fb950; font-weight:600;">Standard</span> — Common workshop or general tools (e.g. torque wrench, multimeter)</li>
+    </ul>
+
+    <h2 id="dashboard">Dashboard</h2>
+    <p>The dashboard gives a live summary of your LSAR data. All values update automatically as you add or edit records.</p>
+    <h3>PM Summary inputs</h3>
+    <p>Set your <strong>utilisation profile</strong> (operating hours/year, cycles/year, fleet size) to compute fleet-level maintenance burden. These settings are saved per project.</p>
+    <h3>FMECA Coverage</h3>
+    <p>The coverage bar shows the percentage of LCN nodes that have at least one FMECA record. Aim for 100% coverage on all safety-critical items.</p>
+
+    <h2 id="exports">Exports</h2>
+    <p>All exports follow the <strong>ASD S3000L</strong> standard format. Go to the <strong>Reports</strong> page to export.</p>
+    <h3>Available exports</h3>
+    <ul>
+      <li><strong>FMEA Register</strong> — LSA Table 030 as a formatted Excel workbook</li>
+      <li><strong>Hardware Breakdown</strong> — LSA Table 010 as a formatted Excel workbook</li>
+      <li><strong>Full LSAR Workbook</strong> — All tables (010–050) in one workbook with a cover sheet</li>
+      <li><strong>Dashboard PDF</strong> — PDF summary report of all dashboard metrics</li>
+    </ul>
+    <p>Each export opens a <strong>Save As</strong> dialog — choose any folder on your computer or network drive.</p>
+    <h3>Import</h3>
+    <p>Import data from a previously exported <strong>Full LSAR Workbook</strong> (.xlsx). Existing records with the same LCN or part number are skipped — no duplicates.</p>
+    <div class="warn"><strong>Note:</strong> The import only reads Catalogue, Hardware and FMEA sheets. Maintenance tasks and support equipment must be added manually after import.</div>
+
+    <h2 id="shortcuts">Keyboard Shortcuts</h2>
+    <table class="shortcut-table">
+      <thead><tr><th>Shortcut</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>Tab</kbd></td><td>Move to next editable cell in the table</td></tr>
+        <tr><td><kbd>Shift</kbd> + <kbd>Space</kbd></td><td>Select entire row</td></tr>
+        <tr><td><kbd>Ctrl</kbd> + <kbd>Space</kbd></td><td>Select entire column</td></tr>
+        <tr><td><kbd>Ctrl</kbd> + <kbd>D</kbd></td><td>Fill selection down from top cell</td></tr>
+        <tr><td><kbd>Ctrl</kbd> + <kbd>R</kbd></td><td>Fill selection across from left cell</td></tr>
+        <tr><td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td><td>Undo last action</td></tr>
+        <tr><td><kbd>Ctrl</kbd> + <kbd>Y</kbd></td><td>Redo</td></tr>
+        <tr><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td><td>Open search bar for current page</td></tr>
+        <tr><td><kbd>Ctrl</kbd> + <kbd>H</kbd></td><td>Open find & replace</td></tr>
+        <tr><td><kbd>Escape</kbd></td><td>Close modal / close search bar</td></tr>
+      </tbody>
+    </table>
+
+  </article>
+</div>
+
+<footer>
+  <div class="footer-logo">LSAR Tool</div>
+  <div class="footer-links">
+    <a href="index.html">Download</a>
+    <a href="guide.html">Guide</a>
+    <a href="releases.html">Releases</a>
+    <a href="about.html">About</a>
+  </div>
+  <p class="footer-copy">© 2025 LSAR Tool. Built for engineers working to ASD S3000L.</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Highlight active sidebar link on scroll
+  const sections = document.querySelectorAll('.guide-content h2[id]')
+  const links = document.querySelectorAll('.guide-sidebar a')
+  window.addEventListener('scroll', () => {
+    let current = ''
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id })
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current))
+  })
+</script>
+</body>
+</html>

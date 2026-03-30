@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSAR Tool — About</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-hero {
+      min-height: 60vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 140px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    .about-hero .hero-bg { position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(46,117,182,0.2) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, rgba(31,78,121,0.15) 0%, transparent 60%);
+    }
+    .about-hero > * { position: relative; z-index: 1; }
+
+    .about-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+
+    .about-section { margin-bottom: 64px; }
+    .about-section h2 {
+      font-size: 26px; font-weight: 700; letter-spacing: -0.5px;
+      margin-bottom: 16px; color: var(--text);
+    }
+    .about-section p {
+      font-size: 16px; color: var(--muted); line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .standard-card {
+      background: linear-gradient(135deg, rgba(31,78,121,0.25), rgba(46,117,182,0.1));
+      border: 1px solid rgba(79,163,224,0.2);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-bottom: 64px;
+    }
+    .standard-card h3 {
+      font-size: 13px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .standard-card p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+    .standard-card strong { color: var(--text); }
+
+    .table-list {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+      margin-top: 20px;
+    }
+    .table-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+    .table-item .t-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+    }
+    .table-item .t-name { font-size: 14px; color: var(--text); font-weight: 500; }
+    .table-item .t-desc { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+    .tech-stack {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 20px;
+    }
+    .tech-pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px; color: var(--muted);
+      transition: all .2s;
+    }
+    .tech-pill:hover { border-color: rgba(79,163,224,0.3); color: var(--text); }
+
+    .founder-card {
+      display: flex; align-items: center; gap: 40px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-bottom: 64px;
+    }
+    .founder-photo {
+      width: 120px; height: 120px; border-radius: 50%; flex-shrink: 0;
+      object-fit: cover; object-position: top;
+      border: 2px solid rgba(79,163,224,0.25);
+    }
+    .founder-info h3 {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.3px;
+      margin-bottom: 4px; color: var(--text);
+    }
+    .founder-info .founder-title {
+      font-size: 13px; color: var(--accent); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+    }
+    .founder-info p {
+      font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 0;
+    }
+    .founder-badge {
+      display: inline-block;
+      background: rgba(79,163,224,0.08);
+      border: 1px solid rgba(79,163,224,0.18);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 12px; font-weight: 600; color: var(--muted);
+      margin-right: 6px; margin-top: 10px;
+    }
+
+    .contact-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+    }
+    .contact-card h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+    .contact-card p { font-size: 15px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+
+    @media (max-width: 600px) {
+      .founder-card { flex-direction: column; align-items: flex-start; gap: 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .table-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">L</div>
+    LSAR Tool
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Download</a></li>
+    <li><a href="guide.html">Guide</a></li>
+    <li><a href="releases.html">Releases</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#download" class="nav-cta">Download Free</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="about-hero">
+  <div class="hero-bg"></div>
+  <p class="section-eyebrow reveal">About</p>
+  <h1 style="font-size:clamp(40px,7vw,72px); font-weight:700; letter-spacing:-2px; line-height:1.05; margin-bottom:18px;">
+    Built for LSA engineers.<br><span style="color:var(--accent);">Not for everyone.</span>
+  </h1>
+  <p class="hero-sub reveal" style="max-width:560px;">
+    LSAR Tool is purpose-built software for engineers performing Logistic Support Analysis to the ASD S3000L standard. No bloat, no subscriptions, no internet required.
+  </p>
+</section>
+
+<div class="about-body">
+
+  <!-- What it is -->
+  <div class="about-section reveal">
+    <h2>What is LSAR Tool?</h2>
+    <p>LSAR Tool is a portable desktop application for Windows that helps defence and aerospace engineers manage their Logistic Support Analysis Record (LSAR) data. It covers the full LSA data set — from hardware breakdown and failure mode analysis through to preventive maintenance tasks and support equipment requirements.</p>
+    <p>Everything runs locally on your machine. Your data never leaves your computer. There are no accounts, no cloud sync, and no telemetry.</p>
+  </div>
+
+  <!-- S3000L standard -->
+  <div class="standard-card reveal">
+    <h3>ASD S3000L Standard</h3>
+    <p><strong>S3000L</strong> is the international standard for Logistic Support Analysis, published by <strong>ASD-STAN</strong> (Aerospace and Defence Industries Association of Europe — Standardisation). It defines the data model, processes and outputs for LSA on defence and commercial systems.</p>
+    <p style="margin-top:12px; margin-bottom:0;">LSAR Tool structures all data according to S3000L LSA Tables and exports to the standard's tabular format — ready for programme submission or integration with higher-level ILS tools.</p>
+    <div class="table-list">
+      <div class="table-item">
+        <div class="t-num">LSA Table 010</div>
+        <div class="t-name">Hardware Breakdown</div>
+        <div class="t-desc">LCN hierarchy and item reference data</div>
+      </div>
+      <div class="table-item">
+        <div class="t-num">LSA Table 020</div>
+        <div class="t-name">Item Catalogue</div>
+        <div class="t-desc">Part numbers, failure rates, categories</div>
+      </div>
+      <div class="table-item">
+        <div class="t-num">LSA Table 030</div>
+        <div class="t-name">FMECA Register</div>
+        <div class="t-desc">Failure modes, effects, criticality data</div>
+      </div>
+      <div class="table-item">
+        <div class="t-num">LSA Table 040</div>
+        <div class="t-name">Maintenance Tasks</div>
+        <div class="t-desc">PM tasks, intervals, man-hours, skills</div>
+      </div>
+      <div class="table-item">
+        <div class="t-num">LSA Table 050</div>
+        <div class="t-name">Support Equipment</div>
+        <div class="t-desc">Special and standard tools linked to tasks</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why -->
+  <div class="about-section reveal">
+    <h2>Why does this exist?</h2>
+    <p>Most LSA work happens in spreadsheets — fragile, inconsistent, and impossible to query. Enterprise ILS tools exist but are expensive, complex, and built for large programmes with full ILS teams.</p>
+    <p>LSAR Tool fills the gap: a focused, structured tool that any LSA engineer can download and start using in minutes. It enforces the S3000L data structure while staying simple enough to use solo on a small programme or contract.</p>
+  </div>
+
+  <!-- Tech stack -->
+  <div class="about-section reveal">
+    <h2>Built with</h2>
+    <p>LSAR Tool is an Electron desktop application. All data is stored in a local SQLite database. Exports are generated with ExcelJS. The entire UI is plain HTML, CSS and JavaScript — no front-end framework.</p>
+    <div class="tech-stack">
+      <span class="tech-pill">Electron</span>
+      <span class="tech-pill">Node.js</span>
+      <span class="tech-pill">SQLite (better-sqlite3)</span>
+      <span class="tech-pill">ExcelJS</span>
+      <span class="tech-pill">HTML / CSS / JS</span>
+      <span class="tech-pill">Windows x64</span>
+    </div>
+  </div>
+
+  <!-- License -->
+  <div class="about-section reveal">
+    <h2>License</h2>
+    <p>LSAR Tool is free for personal and non-commercial use. You may use it on personal projects, learning, and non-funded work. Commercial and programme use (paid contracts, defence programmes, company environments) will require a licence once commercial tiers are available.</p>
+    <p>The source code is not currently open source.</p>
+  </div>
+
+  <!-- Founder -->
+  <div class="about-section reveal">
+    <h2>The person behind it</h2>
+  </div>
+  <div class="founder-card reveal">
+    <img src="img/sebastian.jpg" alt="Sebastian Olofsson" class="founder-photo">
+    <div class="founder-info">
+      <h3>Sebastian Olofsson</h3>
+      <div class="founder-title">Founder</div>
+      <p>Sebastian built LSAR Tool out of frustration with spreadsheet-based LSA workflows. With a background in mechanical engineering, he understands the data, the standard, and what engineers actually need on a programme.</p>
+      <div>
+        <span class="founder-badge">BSc Mechanical Engineering</span>
+        <span class="founder-badge">ASD S3000L</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-card reveal">
+    <h2>Get in touch</h2>
+    <p>Found a bug? Have a feature request? Want to use LSAR Tool on a programme?<br>Reach out and I'll get back to you.</p>
+    <a href="mailto:contact@lsartool.com" class="btn btn-primary" style="display:inline-flex;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      contact@lsartool.com
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">LSAR Tool</div>
+  <div class="footer-links">
+    <a href="index.html">Download</a>
+    <a href="guide.html">Guide</a>
+    <a href="releases.html">Releases</a>
+    <a href="about.html">About</a>
+  </div>
+  <p class="footer-copy">© 2025 LSAR Tool. Built for engineers working to ASD S3000L.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
