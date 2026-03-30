@@ -3,221 +3,351 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LSAR Tool — Download</title>
+  <title>Astrelle — Software for Integrated Logistic Support</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .os-card {
+    /* ── Suite hero ── */
+    .suite-hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 140px 24px 100px;
+      position: relative; overflow: hidden;
+    }
+    .suite-hero .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(46,117,182,0.25) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 85% 90%, rgba(31,78,121,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 10% 80%, rgba(79,163,224,0.08) 0%, transparent 50%);
+    }
+    .suite-hero > * { position: relative; z-index: 1; }
+
+    .suite-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(79,163,224,0.08);
+      border: 1px solid rgba(79,163,224,0.2);
+      padding: 6px 16px; border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .suite-eyebrow span { width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block; }
+
+    .suite-hero h1 {
+      font-size: clamp(56px, 9vw, 96px);
+      font-weight: 800; letter-spacing: -4px; line-height: 0.95;
+      margin-bottom: 28px;
+    }
+    .suite-hero h1 .brand { color: var(--text); }
+    .suite-hero h1 .tagline {
+      display: block;
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 400; letter-spacing: -0.5px;
+      color: var(--muted); margin-top: 12px;
+    }
+
+    .suite-hero .sub {
+      font-size: 18px; color: var(--muted); max-width: 560px;
+      line-height: 1.7; margin-bottom: 48px;
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 1.5px;
+      text-transform: uppercase;
+      animation: bob 2s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+    /* ── Products grid ── */
+    .products-section {
+      padding: 80px 24px 100px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .product-card {
+      position: relative;
+      border-radius: 20px;
+      padding: 40px;
+      display: flex; flex-direction: column;
+      min-height: 340px;
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .product-card:hover { transform: translateY(-6px); }
+
+    .product-card.active {
+      background: linear-gradient(145deg, rgba(31,78,121,0.6) 0%, rgba(15,25,50,0.9) 100%);
+      border: 1px solid rgba(79,163,224,0.3);
+      box-shadow: 0 0 0 1px rgba(79,163,224,0.1), 0 32px 64px rgba(0,0,0,0.4);
+    }
+    .product-card.active:hover {
+      box-shadow: 0 0 0 1px rgba(79,163,224,0.25), 0 40px 80px rgba(0,0,0,0.5);
+    }
+    .product-card.soon {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      cursor: default;
+    }
+    .product-card.soon:hover { transform: none; }
+
+    .product-card-glow {
+      position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,163,224,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .product-number {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .product-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+      margin-bottom: 20px; width: fit-content;
+    }
+    .product-badge.available {
+      background: rgba(63,185,80,0.12);
+      border: 1px solid rgba(63,185,80,0.25);
+      color: #3fb950;
+    }
+    .product-badge.available::before { content:''; width:6px;height:6px;border-radius:50%;background:#3fb950; }
+    .product-badge.coming-soon {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+    }
+
+    .product-name {
+      font-size: 30px; font-weight: 700; letter-spacing: -0.8px;
+      margin-bottom: 8px; color: var(--text);
+    }
+    .product-full-name {
+      font-size: 13px; color: var(--muted); margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .product-desc {
+      font-size: 15px; color: var(--muted); line-height: 1.7;
+      flex: 1;
+    }
+    .product-card.soon .product-desc { opacity: .6; }
+
+    .product-action {
+      margin-top: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .product-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent);
+      color: #fff; font-weight: 600; font-size: 14px;
+      padding: 10px 22px; border-radius: 22px;
+      transition: all .2s;
+    }
+    .product-link:hover { background: var(--accent2); transform: translateY(-1px); }
+    .product-link-secondary {
+      font-size: 14px; color: var(--muted);
+      transition: color .2s;
+    }
+    .product-link-secondary:hover { color: var(--text); }
+
+    /* ── ILS pillars ── */
+    .pillars-section {
+      padding: 80px 24px 100px;
+      background: rgba(255,255,255,0.015);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .pillars-inner { max-width: 1100px; margin: 0 auto; }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .pillar {
       background: var(--glass);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      display: flex; align-items: center; gap: 20px;
-      transition: all .25s; cursor: pointer;
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
     }
-    .os-card:hover {
-      border-color: rgba(79,163,224,0.4);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    .pillar-icon { font-size: 24px; margin-bottom: 10px; }
+    .pillar-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .pillar-abbr { font-size: 11px; color: var(--muted); }
+    .pillar.highlight {
+      background: linear-gradient(135deg, rgba(31,78,121,0.3), rgba(46,117,182,0.1));
+      border-color: rgba(79,163,224,0.25);
     }
-    .os-icon { font-size: 40px; flex-shrink: 0; }
-    .os-info h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
-    .os-info p  { font-size: 13px; color: var(--muted); }
-    .os-badge   { margin-left: auto; }
+    .pillar.highlight .pillar-name { color: var(--accent); }
 
-    .spec-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      font-size: 14px;
+    @media (max-width: 640px) {
+      .products-grid { grid-template-columns: 1fr; }
     }
-    .spec-row:last-child { border-bottom: none; }
-    .spec-label { color: var(--muted); }
-    .spec-value { font-weight: 500; color: var(--text); }
-
-    .stats-row {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 80px;
-    }
-    .stat {
-      background: var(--bg2);
-      padding: 32px 24px; text-align: center;
-    }
-    .stat-num { font-size: 44px; font-weight: 700; letter-spacing: -2px; color: var(--accent); }
-    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
   </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon">L</div>
-    LSAR Tool
+    <div class="nav-logo-icon">A</div>
+    Astrelle
   </a>
   <ul class="nav-links">
-    <li><a href="index.html">Download</a></li>
+    <li><a href="index.html">Suite</a></li>
+    <li><a href="lsar.html">Astrelle LSAR</a></li>
     <li><a href="guide.html">Guide</a></li>
     <li><a href="releases.html">Releases</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="index.html#download" class="nav-cta">Download Free</a></li>
+    <li><a href="lsar.html#download" class="nav-cta">Download LSAR</a></li>
   </ul>
 </nav>
 
 <!-- Hero -->
-<section class="hero">
+<section class="suite-hero">
   <div class="hero-bg"></div>
-  <div class="hero-glow"></div>
 
-  <div class="hero-badge">
-    <span class="hero-badge-dot"></span>
-    Latest release — v1.0.0
-  </div>
+  <div class="suite-eyebrow reveal"><span></span>Astrelle Suite</div>
 
-  <h1>Logistic Support<br><span>Analysis, Simplified.</span></h1>
-  <p class="hero-sub">Professional LSA tooling built for engineers. Manage FMECA records, LCN hierarchies, maintenance tasks and S3000L exports — all in one place.</p>
+  <h1 class="reveal">
+    <span class="brand">Software for<br>Integrated<br>Logistic Support</span>
+    <span class="tagline">by Astrelle</span>
+  </h1>
 
-  <div class="hero-actions">
-    <a href="#download" class="btn btn-primary">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Windows
-    </a>
-    <a href="guide.html" class="btn btn-secondary">
-      View Guide →
-    </a>
-  </div>
-  <p class="hero-meta">Free for personal use &nbsp;·&nbsp; Windows 10/11 &nbsp;·&nbsp; No installation required</p>
-</section>
+  <p class="sub reveal">
+    A growing suite of purpose-built tools for defence and aerospace engineers. Structured around ASD standards. Designed to replace spreadsheets.
+  </p>
 
-<div class="divider"></div>
+  <a href="#products" class="btn btn-primary reveal">
+    Explore the Suite
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+  </a>
 
-<!-- Stats -->
-<div class="band">
-  <div class="band-inner">
-    <div class="stats-row reveal">
-      <div class="stat">
-        <div class="stat-num">S3000L</div>
-        <div class="stat-label">ASD Standard Compliant Export</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Offline — No internet required</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">Free</div>
-        <div class="stat-label">No account needed to start</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Features -->
-<section class="section text-center">
-  <p class="section-eyebrow reveal">What's included</p>
-  <h2 class="section-title reveal">Everything you need for LSA</h2>
-  <p class="section-sub reveal">Built around the ASD S3000L standard. All your LSA data in one structured, exportable workspace.</p>
-
-  <div class="grid-3">
-    <div class="card reveal reveal-delay-1">
-      <div class="card-icon">🗂️</div>
-      <h3>Item Catalogue</h3>
-      <p>Manage all maintainable items with part numbers, failure rates and descriptions.</p>
-    </div>
-    <div class="card reveal reveal-delay-2">
-      <div class="card-icon">🌳</div>
-      <h3>LCN Hierarchy</h3>
-      <p>Build and visualise your full hardware breakdown structure with drag-and-drop LCN trees.</p>
-    </div>
-    <div class="card reveal reveal-delay-3">
-      <div class="card-icon">⚠️</div>
-      <h3>FMECA Register</h3>
-      <p>Full Failure Mode and Effects Analysis with criticality grading, coverage charts and MTBF calculations.</p>
-    </div>
-    <div class="card reveal reveal-delay-1">
-      <div class="card-icon">🔧</div>
-      <h3>Maintenance Tasks</h3>
-      <p>Preventive maintenance task analysis with intervals, man-hours, skill levels and support equipment.</p>
-    </div>
-    <div class="card reveal reveal-delay-2">
-      <div class="card-icon">📦</div>
-      <h3>Support Equipment</h3>
-      <p>Catalogue special and standard support equipment, linked directly to maintenance tasks.</p>
-    </div>
-    <div class="card reveal reveal-delay-3">
-      <div class="card-icon">📊</div>
-      <h3>S3000L Exports</h3>
-      <p>Export to fully formatted Excel workbooks (Tables 010–050) and PDF dashboard reports.</p>
-    </div>
+  <div class="scroll-hint">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    Scroll
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- Products -->
+<section class="products-section" id="products">
+  <div class="text-center">
+    <p class="section-eyebrow reveal">The Suite</p>
+    <h2 class="section-title reveal">Astrelle Suite</h2>
+    <p class="section-sub reveal">Each tool covers a distinct discipline within Integrated Logistic Support. Built to work standalone or together.</p>
+  </div>
 
-<!-- Download section -->
-<section class="section" id="download">
-  <div class="grid-2" style="align-items:start; gap:60px;">
-    <div>
-      <p class="section-eyebrow reveal">Get started</p>
-      <h2 class="section-title reveal">Download LSAR Tool</h2>
-      <p class="section-sub reveal" style="margin-bottom:32px;">A portable Windows application. Extract the zip and run — no installer, no admin rights needed.</p>
+  <div class="products-grid">
 
-      <div style="display:flex; flex-direction:column; gap:12px;">
-        <a href="https://github.com/sebastianolofsson23/lsartool/releases/download/v1.0.0/LSAR-Tool-win-x64.zip" class="os-card reveal" download>
-          <div class="os-icon">🪟</div>
-          <div class="os-info">
-            <h3>Windows x64</h3>
-            <p>Windows 10 / 11 &nbsp;·&nbsp; ~145 MB &nbsp;·&nbsp; Portable zip</p>
-          </div>
-          <div class="os-badge"><span class="tag tag-green">Latest</span></div>
+    <!-- Astrelle LSAR -->
+    <div class="product-card active reveal">
+      <div class="product-card-glow"></div>
+      <div class="product-number">01</div>
+      <div class="product-badge available">Available now</div>
+      <div class="product-name">Astrelle LSAR</div>
+      <div class="product-full-name">Logistic Support Analysis Record</div>
+      <p class="product-desc">Manage FMECA records, LCN hierarchies, maintenance task analysis and support equipment. Exports to ASD S3000L LSA Tables 010–050.</p>
+      <div class="product-action">
+        <a href="lsar.html" class="product-link">
+          View product
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
-        <div class="os-card reveal reveal-delay-1" style="opacity:.45; cursor:not-allowed; pointer-events:none;">
-          <div class="os-icon">🍎</div>
-          <div class="os-info">
-            <h3>macOS</h3>
-            <p>Coming soon</p>
-          </div>
-          <div class="os-badge"><span class="tag tag-gray">Soon</span></div>
-        </div>
+        <a href="lsar.html#download" class="product-link-secondary">Download →</a>
       </div>
     </div>
 
-    <div class="reveal reveal-delay-2">
-      <div class="card">
-        <h3 style="margin-bottom:20px; font-size:16px; color:var(--muted); font-weight:500; text-transform:uppercase; letter-spacing:1px; font-size:12px;">System Requirements</h3>
-        <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11 (64-bit)</span></div>
-        <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">4 GB minimum</span></div>
-        <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">500 MB free space</span></div>
-        <div class="spec-row"><span class="spec-label">Internet</span><span class="spec-value">Not required</span></div>
-        <div class="spec-row"><span class="spec-label">Version</span><span class="spec-value">v1.0.0</span></div>
-        <div class="spec-row"><span class="spec-label">License</span><span class="spec-value">Free for personal use</span></div>
+    <!-- Astrelle TP -->
+    <div class="product-card soon reveal reveal-delay-1">
+      <div class="product-number">02</div>
+      <div class="product-badge coming-soon">Coming soon</div>
+      <div class="product-name" style="color:var(--muted);">Astrelle TP</div>
+      <div class="product-full-name">Technical Publications</div>
+      <p class="product-desc">Author and manage interactive technical publications and maintenance manuals. Structured to ASD S1000D, linked directly to LSAR task data.</p>
+      <div class="product-action">
+        <span style="font-size:13px; color:rgba(255,255,255,0.2); font-style:italic;">In development</span>
       </div>
+    </div>
 
-      <div class="card" style="margin-top:16px; padding:20px 28px;">
-        <p style="font-size:13px; color:var(--muted); line-height:1.7;">
-          <strong style="color:var(--text);">How to install:</strong><br>
-          1. Download the .zip file<br>
-          2. Extract to any folder<br>
-          3. Double-click <code style="color:var(--accent); background:rgba(79,163,224,0.1); padding:1px 6px; border-radius:4px;">LSAR Tool.exe</code><br>
-          4. Windows may show a SmartScreen warning — click <em>"More info → Run anyway"</em>
-        </p>
+    <!-- Placeholder 03 -->
+    <div class="product-card soon reveal reveal-delay-2">
+      <div class="product-number">03</div>
+      <div class="product-badge coming-soon">Planned</div>
+      <div class="product-name" style="color:var(--muted);">More to come</div>
+      <div class="product-full-name">Astrelle Suite</div>
+      <p class="product-desc">Additional ILS disciplines are on the roadmap — supply support, training, facilities and packaging analysis tools.</p>
+      <div class="product-action">
+        <span style="font-size:13px; color:rgba(255,255,255,0.2); font-style:italic;">Roadmap</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ILS Pillars -->
+<section class="pillars-section">
+  <div class="pillars-inner">
+    <div class="text-center">
+      <p class="section-eyebrow reveal">What we cover</p>
+      <h2 class="section-title reveal">ILS Disciplines</h2>
+      <p class="section-sub reveal">Integrated Logistic Support spans many disciplines. Astrelle Suite is being built to cover them all.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar highlight reveal">
+        <div class="pillar-icon">📋</div>
+        <div class="pillar-name">Logistic Support Analysis</div>
+        <div class="pillar-abbr">LSA · S3000L</div>
+      </div>
+      <div class="pillar reveal reveal-delay-1">
+        <div class="pillar-icon">📖</div>
+        <div class="pillar-name">Technical Publications</div>
+        <div class="pillar-abbr">TP · S1000D</div>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <div class="pillar-icon">📦</div>
+        <div class="pillar-name">Supply Support</div>
+        <div class="pillar-abbr">Spares & provisioning</div>
+      </div>
+      <div class="pillar reveal reveal-delay-3">
+        <div class="pillar-icon">🎓</div>
+        <div class="pillar-name">Training</div>
+        <div class="pillar-abbr">Training needs analysis</div>
+      </div>
+      <div class="pillar reveal reveal-delay-1">
+        <div class="pillar-icon">🔧</div>
+        <div class="pillar-name">Support Equipment</div>
+        <div class="pillar-abbr">STE cataloguing</div>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <div class="pillar-icon">🏗️</div>
+        <div class="pillar-name">Facilities</div>
+        <div class="pillar-abbr">Infrastructure analysis</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
-  <div class="footer-logo">LSAR Tool</div>
+  <div class="footer-logo">Astrelle</div>
   <div class="footer-links">
-    <a href="index.html">Download</a>
+    <a href="index.html">Suite</a>
+    <a href="lsar.html">Astrelle LSAR</a>
     <a href="guide.html">Guide</a>
     <a href="releases.html">Releases</a>
     <a href="about.html">About</a>
   </div>
-  <p class="footer-copy">© 2025 LSAR Tool. Built for engineers working to ASD S3000L.</p>
+  <p class="footer-copy">© 2025 Astrelle. Built for engineers working to ASD S3000L.</p>
 </footer>
 
 <script src="js/main.js"></script>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astrelle LSAR — Logistic Support Analysis Record</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .os-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex; align-items: center; gap: 20px;
+      transition: all .25s; cursor: pointer;
+    }
+    .os-card:hover {
+      border-color: rgba(79,163,224,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+    .os-icon { font-size: 40px; flex-shrink: 0; }
+    .os-info h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+    .os-info p  { font-size: 13px; color: var(--muted); }
+    .os-badge   { margin-left: auto; }
+
+    .spec-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 14px;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: var(--muted); }
+    .spec-value { font-weight: 500; color: var(--text); }
+
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+    .stat {
+      background: var(--bg2);
+      padding: 32px 24px; text-align: center;
+    }
+    .stat-num { font-size: 44px; font-weight: 700; letter-spacing: -2px; color: var(--accent); }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    .product-hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .product-hero-badge a { color: var(--accent); }
+    .product-hero-badge a:hover { color: var(--accent2); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">A</div>
+    Astrelle
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Suite</a></li>
+    <li><a href="lsar.html">Astrelle LSAR</a></li>
+    <li><a href="guide.html">Guide</a></li>
+    <li><a href="releases.html">Releases</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#download" class="nav-cta">Download LSAR</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="product-hero-badge reveal">
+    <a href="index.html">Astrelle Suite</a>
+    <span style="color:rgba(255,255,255,0.2);">→</span>
+    <span>Astrelle LSAR</span>
+  </div>
+
+  <div class="hero-badge reveal">
+    <span class="hero-badge-dot"></span>
+    Latest release — v1.0.0
+  </div>
+
+  <h1>Logistic Support<br><span>Analysis, Simplified.</span></h1>
+  <p class="hero-sub">Manage FMECA records, LCN hierarchies, maintenance tasks and S3000L exports — all in one structured, offline workspace.</p>
+
+  <div class="hero-actions">
+    <a href="#download" class="btn btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download for Windows
+    </a>
+    <a href="guide.html" class="btn btn-secondary">View Guide →</a>
+  </div>
+  <p class="hero-meta">Free for personal use &nbsp;·&nbsp; Windows 10/11 &nbsp;·&nbsp; No installation required</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- Stats -->
+<div class="band">
+  <div class="band-inner">
+    <div class="stats-row reveal">
+      <div class="stat">
+        <div class="stat-num">S3000L</div>
+        <div class="stat-label">ASD Standard Compliant Export</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Offline — No internet required</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Free</div>
+        <div class="stat-label">No account needed to start</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features -->
+<section class="section text-center">
+  <p class="section-eyebrow reveal">What's included</p>
+  <h2 class="section-title reveal">Everything you need for LSA</h2>
+  <p class="section-sub reveal">Built around the ASD S3000L standard. All your LSA data in one structured, exportable workspace.</p>
+
+  <div class="grid-3">
+    <div class="card reveal reveal-delay-1">
+      <div class="card-icon">🗂️</div>
+      <h3>Item Catalogue</h3>
+      <p>Manage all maintainable items with part numbers, failure rates and descriptions.</p>
+    </div>
+    <div class="card reveal reveal-delay-2">
+      <div class="card-icon">🌳</div>
+      <h3>LCN Hierarchy</h3>
+      <p>Build and visualise your full hardware breakdown structure with collapsible LCN trees.</p>
+    </div>
+    <div class="card reveal reveal-delay-3">
+      <div class="card-icon">⚠️</div>
+      <h3>FMECA Register</h3>
+      <p>Full Failure Mode and Effects Analysis with criticality grading, coverage charts and MTBF calculations.</p>
+    </div>
+    <div class="card reveal reveal-delay-1">
+      <div class="card-icon">🔧</div>
+      <h3>Maintenance Tasks</h3>
+      <p>Preventive maintenance task analysis with intervals, man-hours, skill levels and support equipment.</p>
+    </div>
+    <div class="card reveal reveal-delay-2">
+      <div class="card-icon">📦</div>
+      <h3>Support Equipment</h3>
+      <p>Catalogue special and standard support equipment, linked directly to maintenance tasks.</p>
+    </div>
+    <div class="card reveal reveal-delay-3">
+      <div class="card-icon">📊</div>
+      <h3>S3000L Exports</h3>
+      <p>Export to fully formatted Excel workbooks (Tables 010–050) and PDF dashboard reports.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Download -->
+<section class="section" id="download">
+  <div class="grid-2" style="align-items:start; gap:60px;">
+    <div>
+      <p class="section-eyebrow reveal">Get started</p>
+      <h2 class="section-title reveal">Download Astrelle LSAR</h2>
+      <p class="section-sub reveal" style="margin-bottom:32px;">A portable Windows application. Extract the zip and run — no installer, no admin rights needed.</p>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <a href="https://github.com/sebastianolofsson23/lsartool/releases/download/v1.0.0/LSAR-Tool-win-x64.zip" class="os-card reveal" download>
+          <div class="os-icon">🪟</div>
+          <div class="os-info">
+            <h3>Windows x64</h3>
+            <p>Windows 10 / 11 &nbsp;·&nbsp; ~145 MB &nbsp;·&nbsp; Portable zip</p>
+          </div>
+          <div class="os-badge"><span class="tag tag-green">Latest</span></div>
+        </a>
+        <div class="os-card reveal reveal-delay-1" style="opacity:.45; cursor:not-allowed; pointer-events:none;">
+          <div class="os-icon">🍎</div>
+          <div class="os-info">
+            <h3>macOS</h3>
+            <p>Coming soon</p>
+          </div>
+          <div class="os-badge"><span class="tag tag-gray">Soon</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <div class="card">
+        <h3 style="margin-bottom:20px; font-size:12px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:1px;">System Requirements</h3>
+        <div class="spec-row"><span class="spec-label">OS</span><span class="spec-value">Windows 10 / 11 (64-bit)</span></div>
+        <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">4 GB minimum</span></div>
+        <div class="spec-row"><span class="spec-label">Storage</span><span class="spec-value">500 MB free space</span></div>
+        <div class="spec-row"><span class="spec-label">Internet</span><span class="spec-value">Not required</span></div>
+        <div class="spec-row"><span class="spec-label">Version</span><span class="spec-value">v1.0.0</span></div>
+        <div class="spec-row"><span class="spec-label">License</span><span class="spec-value">Free for personal use</span></div>
+      </div>
+
+      <div class="card" style="margin-top:16px; padding:20px 28px;">
+        <p style="font-size:13px; color:var(--muted); line-height:1.7;">
+          <strong style="color:var(--text);">How to install:</strong><br>
+          1. Download the .zip file<br>
+          2. Extract to any folder<br>
+          3. Double-click <code style="color:var(--accent); background:rgba(79,163,224,0.1); padding:1px 6px; border-radius:4px;">Astrelle LSAR.exe</code><br>
+          4. Windows may show a SmartScreen warning — click <em>"More info → Run anyway"</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Astrelle</div>
+  <div class="footer-links">
+    <a href="index.html">Suite</a>
+    <a href="lsar.html">Astrelle LSAR</a>
+    <a href="guide.html">Guide</a>
+    <a href="releases.html">Releases</a>
+    <a href="about.html">About</a>
+  </div>
+  <p class="footer-copy">© 2025 Astrelle. Built for engineers working to ASD S3000L.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
