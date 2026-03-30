@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSAR Tool — Releases</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .releases-layout {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+    .releases-header {
+      margin-bottom: 56px;
+    }
+    .release-tag-row {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px;
+    }
+    .release-category {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .release-category.feat { color: #3fb950; }
+    .release-category.fix  { color: var(--accent); }
+    .release-category.impr { color: var(--gold); }
+    .release-category.feat::before { content: ''; width:7px;height:7px;border-radius:50%;background:#3fb950;display:inline-block; }
+    .release-category.fix::before  { content: ''; width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block; }
+    .release-category.impr::before { content: ''; width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block; }
+
+    .release-list li {
+      padding: 9px 0;
+    }
+    .release-list li span.li-cat {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: .4px;
+      text-transform: uppercase;
+      padding: 2px 7px; border-radius: 4px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .li-cat.feat { background: rgba(63,185,80,0.12); color: #3fb950; border: 1px solid rgba(63,185,80,0.2); }
+    .li-cat.fix  { background: rgba(79,163,224,0.1); color: var(--accent); border: 1px solid rgba(79,163,224,0.2); }
+    .li-cat.impr { background: rgba(255,192,0,0.1); color: var(--gold); border: 1px solid rgba(255,192,0,0.2); }
+
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(79,163,224,0.1);
+      border: 1px solid rgba(79,163,224,0.25);
+      color: var(--accent);
+      padding: 8px 18px; border-radius: 20px;
+      font-size: 13px; font-weight: 600;
+      transition: all .2s;
+    }
+    .download-btn:hover {
+      background: rgba(79,163,224,0.18);
+      color: var(--accent2);
+      transform: translateY(-1px);
+    }
+
+    .future-card {
+      background: rgba(79,163,224,0.04);
+      border: 1px dashed rgba(79,163,224,0.2);
+      border-radius: var(--radius);
+      padding: 36px;
+      text-align: center;
+      margin-top: 12px;
+    }
+    .future-card p { font-size: 14px; color: var(--muted); margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">L</div>
+    LSAR Tool
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Download</a></li>
+    <li><a href="guide.html">Guide</a></li>
+    <li><a href="releases.html">Releases</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#download" class="nav-cta">Download Free</a></li>
+  </ul>
+</nav>
+
+<div class="releases-layout">
+
+  <div class="releases-header reveal">
+    <p class="section-eyebrow">Changelog</p>
+    <h1 style="font-size:clamp(36px,6vw,56px); font-weight:700; letter-spacing:-1.5px; margin-bottom:14px;">Release Notes</h1>
+    <p style="font-size:17px; color:var(--muted); max-width:520px; line-height:1.6;">Every release, documented. Download any version or track what's changed.</p>
+  </div>
+
+  <!-- v1.0.0 -->
+  <div class="release reveal">
+    <div class="release-header">
+      <span class="release-version">v1.0.0</span>
+      <span class="tag tag-green">Latest</span>
+      <span class="release-date">March 2025 &nbsp;·&nbsp; Initial Release</span>
+      <a href="https://github.com/sebastianolofsson23/lsar-tool/releases/download/v1.0.0/LSAR-Tool-win-x64.zip" class="download-btn" download style="margin-left:auto;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+
+    <ul class="release-list">
+      <li>
+        <span class="li-cat feat">New</span>
+        Item Catalogue — manage all maintainable hardware with part numbers, failure rates and categories
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        LCN Hierarchy — build a full hardware breakdown structure with collapsible tree view
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        FMECA Register — failure mode and effects analysis with severity grading, MTBF and coverage tracking
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Maintenance Tasks — preventive maintenance analysis with intervals, man-hours and skill levels
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Support Equipment — catalogue special and standard tools, linked directly to maintenance tasks
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Dashboard — live summary with PM burden calculations, FMECA coverage and criticality MTBF cards
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        S3000L Exports — LSA Tables 010–050 exported as formatted Excel workbooks; full LSAR workbook with cover sheet
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Dashboard PDF — one-click PDF summary report of all dashboard metrics
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Multi-project support — create, open, rename and close projects; each project is an isolated SQLite database
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Custom storage location — choose where new database files are saved
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Inline table editing — edit cells directly in place with Tab navigation and auto-save
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Column filters — sort and filter on every column in every table
+      </li>
+      <li>
+        <span class="li-cat feat">New</span>
+        Import from Full LSAR Workbook — reload catalogue, hardware and FMEA data from a previously exported .xlsx
+      </li>
+    </ul>
+  </div>
+
+  <!-- Upcoming -->
+  <div class="future-card reveal" style="margin-top:32px;">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(79,163,224,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 12px;display:block;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <h3 style="font-size:17px; font-weight:600; color:var(--muted);">More releases coming soon</h3>
+    <p>Multi-user shared network drive support, login & licensing, and more on the roadmap.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">LSAR Tool</div>
+  <div class="footer-links">
+    <a href="index.html">Download</a>
+    <a href="guide.html">Guide</a>
+    <a href="releases.html">Releases</a>
+    <a href="about.html">About</a>
+  </div>
+  <p class="footer-copy">© 2025 LSAR Tool. Built for engineers working to ASD S3000L.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
