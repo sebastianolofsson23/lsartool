@@ -151,6 +151,8 @@
       <li><a href="#fmeca">FMECA</a></li>
       <li><a href="#tasks">Maintenance Tasks</a></li>
       <li><a href="#support">Support Equipment</a></li>
+      <li><a href="#lsc">LSC Analysis</a></li>
+      <li><a href="#history">History</a></li>
       <li><a href="#dashboard">Dashboard</a></li>
       <li><a href="#exports">Exports</a></li>
       <li><a href="#shortcuts">Keyboard Shortcuts</a></li>
@@ -211,14 +213,20 @@
     <h2 id="tasks">Maintenance Tasks</h2>
     <p>Preventive maintenance task analysis — equivalent to LSA Table 040. Tasks are linked to LCN nodes and drive the PM summary on the dashboard.</p>
     <h3>Adding tasks</h3>
-    <p>Click <strong>+ Add Task</strong>. Select the LCN node, set a task ID, description, interval, man-hours, personnel count and skill level.</p>
+    <p>Click <strong>+ New Task</strong>. Select the LCN node, set a task ID, description, interval, man-hours, personnel count and skill level. Task IDs must be unique — duplicates are blocked.</p>
+    <div class="tip"><strong>Tip:</strong> Use the <strong>Copy from existing task</strong> dropdown at the top of the form to pre-fill all fields from an existing task. Useful when the same task applies to multiple LCN nodes — copy it, then just pick a different LCN.</div>
+    <h3>Task detail panel</h3>
+    <p>Click any row in the task table to open the detail panel below. It has three tabs:</p>
+    <ul>
+      <li><strong>Define Task</strong> — Edit task ID, description, interval, man-hours, personnel and skill level</li>
+      <li><strong>LCN Link</strong> — View the currently linked LCN node and change it to a different one</li>
+      <li><strong>Resources</strong> — Select spare parts and special tools required for this task</li>
+    </ul>
     <h3>Skill levels</h3>
     <ul>
       <li><span style="color:#79c0ff; font-weight:600;">Basic</span> — Standard maintenance technician</li>
       <li><span style="color:#d2a8ff; font-weight:600;">Intermediate</span> — Specialist or systems technician</li>
     </ul>
-    <h3>Support equipment</h3>
-    <p>Click the <kbd>✏️</kbd> button on any task to open the edit modal. The <strong>Support Equipment</strong> section lets you link required STE to the task with quantities.</p>
 
     <h2 id="support">Support Equipment</h2>
     <p>The Support Equipment catalogue stores all Special and Standard tools and equipment — equivalent to LSA Table 050.</p>
@@ -227,6 +235,31 @@
       <li><span style="color:#e3b341; font-weight:600;">Special</span> — Purpose-built or programme-specific tools (e.g. borescope kit, hydraulic test rig)</li>
       <li><span style="color:#3fb950; font-weight:600;">Standard</span> — Common workshop or general tools (e.g. torque wrench, multimeter)</li>
     </ul>
+
+    <h2 id="lsc">LSC Analysis</h2>
+    <p>The Logistic Support Cost (LSC) page computes the maintenance burden and cost profile across your entire hardware breakdown structure.</p>
+    <h3>Cost by Task chart</h3>
+    <p>The horizontal bar chart shows cost per task broken down into labour and parts. Use the controls above the chart to:</p>
+    <ul>
+      <li>Filter by <strong>PM</strong> (scheduled) or <strong>CM</strong> (unscheduled) tasks</li>
+      <li>Sort by total cost, labour, parts, name or type</li>
+      <li>Limit the chart to the top N tasks</li>
+    </ul>
+    <h3>Maintenance Load table</h3>
+    <p>The table mirrors the LCN hierarchy. Click the <kbd>▶</kbd> toggle on any LCN node to collapse or expand its children — the same tree behaviour as the LCN Hierarchy page. Maintenance task rows are highlighted and clickable — clicking one navigates directly to that task in the Maintenance Tasks page.</p>
+    <div class="tip"><strong>Tip:</strong> Use the column filter buttons (▾) in each header to sort and filter the maintenance load table by skill, support items, cost or any other column.</div>
+
+    <h2 id="history">History</h2>
+    <p>The History tab is the first item in the sidebar and logs every database write operation — creates, updates and deletes — with a full description of what changed.</p>
+    <h3>What is recorded</h3>
+    <ul>
+      <li>The timestamp of the change</li>
+      <li>The action type: <span style="color:#3fb950;font-weight:600;">INSERT</span>, <span style="color:#58a6ff;font-weight:600;">UPDATE</span> or <span style="color:#f85149;font-weight:600;">DELETE</span></li>
+      <li>The entity type (Item Catalogue, LCN Node, FMECA, Maint. Task, etc.)</li>
+      <li>The OS username of the person who made the change</li>
+      <li>A detailed description — for updates this includes the field name and old → new value</li>
+    </ul>
+    <div class="tip"><strong>Tip:</strong> Use the column filter buttons (▾) to filter history by action type, user or entity. Click <strong>🗑 Clear Log</strong> to wipe the audit trail.</div>
 
     <h2 id="dashboard">Dashboard</h2>
     <p>The dashboard gives a live summary of your LSAR data. All values update automatically as you add or edit records.</p>
@@ -243,6 +276,7 @@
       <li><strong>Hardware Breakdown</strong> — LSA Table 010 as a formatted Excel workbook</li>
       <li><strong>Full LSAR Workbook</strong> — All tables (010–050) in one workbook with a cover sheet</li>
       <li><strong>Dashboard PDF</strong> — PDF summary report of all dashboard metrics</li>
+      <li><strong>PM Schedule Report</strong> — PDF of all preventive maintenance tasks grouped by LCN node, including intervals, man-hours, personnel, skill level and required resources</li>
     </ul>
     <p>Each export opens a <strong>Save As</strong> dialog — choose any folder on your computer or network drive.</p>
     <h3>Import</h3>
